@@ -32,6 +32,7 @@ object BetamaxDependencies {
     asyncHttpClient,
     betamax,
     groovy,
+    slf4j,
     specs2
   )
 }
@@ -42,11 +43,13 @@ object Dependency {
     val AsyncHttpClient = "1.7.6"
     val Betamax         = "1.1.2"
     val Groovy          = "2.0.6"
+    val Slf4j           = "1.7.2"
     val Specs2          = "1.9"
   }
 
   val asyncHttpClient   = "com.ning"             % "async-http-client"  % V.AsyncHttpClient
   val betamax           = "co.freeside"          % "betamax"            % V.Betamax
   val groovy            = "org.codehaus.groovy"  % "groovy"             % V.Groovy
+  val slf4j             = "org.slf4j"            % "slf4j-simple"       % V.Slf4j
   val specs2            = "org.specs2"          %% "specs2"             % V.Specs2     % "test"
 }
