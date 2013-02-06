@@ -18,6 +18,9 @@ object ProxyMain extends App {
   def printUsage() {
     val file = new File(this.getClass.getProtectionDomain.getCodeSource.getLocation.toURI)
     println("Usage: ./%s {tape path} [port=%d]".format(file.getName, defaultPort))
+    println("Examples:")
+    println(" * ./%s tapes/recorded.yaml".format(file.getName))
+    println(" * ./%s /Users/user/stored-tapes/usecase1.yaml %d".format(file.getName, defaultPort + 1))
   }
 
   try {
