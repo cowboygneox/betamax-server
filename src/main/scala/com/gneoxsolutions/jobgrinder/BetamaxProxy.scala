@@ -4,7 +4,9 @@ import co.freeside.betamax.proxy.jetty.ProxyServer
 import co.freeside.betamax.{HttpInterceptor, Recorder}
 import java.util.Properties
 
-class BetamaxProxy(tapeRoot: String, tapeName: String, proxyPort: Int) extends HttpInterceptor {
+class BetamaxProxy(tapePath: String, proxyPort: Int) extends HttpInterceptor {
+
+  val (tapeRoot, tapeName) = tapePath.replaceAll(".yaml", "").splitAt(tapePath.lastIndexOf("/"))
 
   val properties = new Properties()
   properties.setProperty("betamax.defaultMode", "READ_WRITE")

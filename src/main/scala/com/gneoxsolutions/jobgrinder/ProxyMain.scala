@@ -5,8 +5,8 @@ import java.io.File
 
 object ProxyMain extends App {
 
-  def runApp(tapeRoot: String, tapeName: String, port: Int) {
-    val proxy: BetamaxProxy = new BetamaxProxy(tapeRoot, tapeName, port)
+  def runApp(tapePath: String, port: Int) {
+    val proxy: BetamaxProxy = new BetamaxProxy(tapePath, port)
 
     proxy.start()
 
@@ -15,12 +15,12 @@ object ProxyMain extends App {
 
   def printUsage() {
     val file = new File(this.getClass.getProtectionDomain.getCodeSource.getLocation.toURI)
-    println("Usage: ./%s {tape directory} {tape name} {port}".format(file.getName))
+    println("Usage: ./%s {tape path} {port}".format(file.getName))
   }
 
   try {
     args.toList match {
-      case tapeRoot :: tapeName :: port :: Nil => runApp(tapeRoot, tapeName, port.toInt)
+      case tapePath :: port :: Nil => runApp(tapePath, port.toInt)
       case _ => printUsage()
     }
   } catch {

@@ -12,7 +12,7 @@ class BetamaxProxyTest extends Specification {
 
   "A betamax proxy" should {
     val port  = 3333
-    val proxy = new BetamaxProxy("src/test/resources/betamax/tapes", "test", port)
+    val proxy = new BetamaxProxy("src/test/resources/betamax/tapes/test.yaml", port)
 
     "Start on port %d".format(port) in {
       proxy.isRunning must beEqualTo(false)
@@ -32,7 +32,7 @@ class BetamaxProxyTest extends Specification {
       val host = new HttpHost("www.google.com", 80)
       val get: HttpGet = new HttpGet("/")
       val response = httpClient.execute(host, get)
-      
+
       response.getStatusLine.getStatusCode must beEqualTo(768)
     }
 
