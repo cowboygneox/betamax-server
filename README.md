@@ -2,7 +2,7 @@
 *Use the power of [betamax](http://freeside.co/betamax/) in a standalone proxy server*
 
 ## Download
-Binaries are located [here](tree/master/bin)
+Binaries are located [here](bin).
 
 ## Usage
 ```
