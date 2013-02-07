@@ -6,7 +6,7 @@ import AssemblyKeys._
 object ApplicationBuild extends Build {
   val Organization     = "com.gneoxsolutions"
   val OrganizationName = "Gneox Solutions, LLC."
-  val Version          = "1.0-SNAPSHOT"
+  val Version          = "0.1-SNAPSHOT"
   val ScalaVersion     = "2.9.1"
 
   val buildSettings = Defaults.defaultSettings ++ Seq(
