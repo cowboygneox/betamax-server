@@ -1,15 +1,15 @@
 package com.gneoxsolutions.jobgrinder
 
 import co.freeside.betamax.proxy.jetty.ProxyServer
-import co.freeside.betamax.{HttpInterceptor, Recorder}
+import co.freeside.betamax._
 import java.util.Properties
 
-class BetamaxProxy(tapePath: String, proxyPort: Int) extends HttpInterceptor {
+class BetamaxProxy(tapePath: String, proxyPort: Int, tapeMode: TapeMode) extends HttpInterceptor {
 
   val (tapeRoot, tapeName) = tapePath.replaceAll(".yaml", "").splitAt(tapePath.lastIndexOf("/"))
 
   val properties = new Properties()
-  properties.setProperty("betamax.defaultMode"    , "READ_WRITE")
+  properties.setProperty("betamax.defaultMode"    , tapeMode.toString)
   properties.setProperty("betamax.ignoreLocalhost", "true")
   properties.setProperty("betamax.sslSupport"     , "true")
   properties.setProperty("betamax.tapeRoot"       , tapeRoot)

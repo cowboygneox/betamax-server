@@ -7,6 +7,7 @@ import org.apache.http.{HttpResponse, HttpHost}
 import org.apache.http.conn.params.ConnRoutePNames
 import org.apache.http.util.EntityUtils
 import java.net.URI
+import co.freeside.betamax.TapeMode.READ_ONLY
 
 class BetamaxProxyTest extends Specification {
   sequential
@@ -14,7 +15,7 @@ class BetamaxProxyTest extends Specification {
 
   "A betamax proxy" should {
     val port  = 3333
-    val proxy = new BetamaxProxy("src/test/resources/betamax/tapes/test.yaml", port)
+    val proxy = new BetamaxProxy("src/test/resources/betamax/tapes/test.yaml", port, READ_ONLY)
 
     val httpClient = new DefaultHttpClient()
     httpClient.getParams.setParameter(ConnRoutePNames.DEFAULT_PROXY, new HttpHost("127.0.0.1", port))
@@ -45,6 +46,12 @@ class BetamaxProxyTest extends Specification {
     "Reload a response from Google" in {
       get("http://www.google.com/") { response =>
         response.getStatusLine.getStatusCode must beEqualTo(768)
+      }
+    }
+
+    "Fail to reload a response from Yahoo" in {
+      get("http://www.yahoo.com/") { response =>
+        response.getStatusLine.getStatusCode must beEqualTo(500)
       }
     }
 
