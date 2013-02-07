@@ -51,7 +51,7 @@ class BetamaxProxyTest extends Specification {
 
     "Fail to reload a response from Yahoo" in {
       get("http://www.yahoo.com/") { response =>
-        response.getStatusLine.getStatusCode must beEqualTo(500)
+        response.getStatusLine.getStatusCode must beEqualTo(403)
       }
     }
 
